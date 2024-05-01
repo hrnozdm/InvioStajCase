@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { Button, Form, Input,Modal, message } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../../redux/ProductSlice";
-const ProductProcess = () => {
+const ProductProcess = ({search,setSearch}) => {
 const [isModalOpen, setIsModalOpen] = useState(false);
-
 const dispatch = useDispatch();
   
   const onFinishAddProduct=async (values)=>{
@@ -26,6 +25,7 @@ const dispatch = useDispatch();
           type="text"
           placeholder="Search..."
           className="border border-gray-300 rounded-lg px-4 py-2 mb-2 sm:mb-0 sm:w-1/2"
+          onChange={(e)=>setSearch(e.target.value)}
         />
         <button
           className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"

@@ -59,8 +59,6 @@ export const deleteProduct = createAsyncThunk('deleteProduct',async (productId)=
     getAllProduct();
     message.success("Ürün Silme İşlemi Başarılı");
   
-  
-      
      } catch (error) {
       throw new Error("Ürün Silinirken bir hata oluştu: " + error.message);
      }

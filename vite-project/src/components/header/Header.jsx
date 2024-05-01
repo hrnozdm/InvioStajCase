@@ -2,14 +2,13 @@ import { Avatar, Badge, Space, message } from "antd";
 import React from "react";
 import { useSelector } from 'react-redux'
 import { supabase } from "../../lib/supabaseClient";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 
 const Header = () => {
   const navigate = useNavigate();
-  const cartItems=useSelector((state) => state.cart.cartItems);
-  console.log(cartItems);
+  const cartItems = useSelector((state) => state.cart.cartItems);
+
   const logOut = async () => {
     try {
       const { error } = await supabase.auth.signOut();
@@ -23,19 +22,20 @@ const Header = () => {
       message.error("Başarısız İşlem");
     }
   };
+
   return (
     <header className="bg-gray-800 text-white py-4">
       <div className="container mx-auto flex justify-center items-center">
         <div className="flex-grow">
           <nav>
             <ul className="flex justify-center">
-              <Link to="/">
-                <li className="mx-4">Dashboard</li>
-              </Link>
               <li className="mx-4">
-                <a href="#" className="hover:text-gray-300">
+                <Link to="/">Dashboard</Link>
+              </li>
+              <li className="mx-4">
+                <Link to="/analysis" className="hover:text-gray-300">
                   Product Analysis
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>
@@ -49,13 +49,13 @@ const Header = () => {
             </Space>
           </Link>
 
-          <Link to="/profile">
-            <a className="hover:text-gray-300 ml-4">Profile</a>
+          <Link to="/profile" className="ml-4 hover:text-gray-300">
+            Profile
           </Link>
 
-          <a href="#" className="hover:text-gray-300 ml-4" onClick={logOut}>
+          <Link to="#" className="ml-4 hover:text-gray-300" onClick={logOut}>
             LogOut
-          </a>
+          </Link>
         </div>
       </div>
     </header>
