@@ -20,10 +20,10 @@ const UserProfile = () => {
                     <div className="px-6 py-4">
                         <div className="font-bold text-xl mb-2">User Profile</div>
                         <div>
-                            <p className="text-gray-700">Username: {userData.user_metadata.username}</p>
-                            <p className="text-gray-700">Country: {userData.user_metadata.country}</p>
-                            <p className="text-gray-700">Phone: {userData.user_metadata.phone}</p>
-                            <p className="text-gray-700">Email: {userData.user_metadata.email}</p>
+                            <p className="text-gray-700">Username: {userData?.user_metadata?.username}</p>
+                            <p className="text-gray-700">Country: {userData?.user_metadata?.country}</p>
+                            <p className="text-gray-700">Phone: {userData?.user_metadata?.phone}</p>
+                            <p className="text-gray-700">Email: {userData?.user_metadata?.email}</p>
                         </div>
                     </div>
                 </div>

@@ -4,6 +4,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import UserProfile from "./pages/UserProfile";
+import Basket from "./pages/Basket";
 
 const AuthGuard = ({ children }) => {
   const isAuthenticated = localStorage.getItem("user");
@@ -20,6 +21,10 @@ function App() {
 
         <Route path="/profile" element={<AuthGuard> 
           <UserProfile/>
+        </AuthGuard>} />
+
+        <Route path="/basket" element={<AuthGuard> 
+          <Basket/>
         </AuthGuard>} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
