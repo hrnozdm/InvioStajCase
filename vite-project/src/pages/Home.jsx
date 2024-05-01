@@ -9,16 +9,18 @@ const Home = () => {
   const [search, setSearch] = useState("");
   const dispatch = useDispatch();
   
-  useEffect(() => {
-    dispatch(getAllProduct());
-  }, [dispatch]);
+  
 
   const productsData = useSelector((state) => state.product.productsData);
 
-  const filteredProducts = productsData.filter((product) =>
-    product.name.toLowerCase().includes(search.toLowerCase())
-  );
+  const filteredProducts = productsData ? productsData.filter((product) =>
+  product.name.toLowerCase().includes(search.toLowerCase())
+) : [];
 
+ 
+useEffect(() => {
+  dispatch(getAllProduct());
+}, [productsData,filteredProducts]);
 
 
   return (
@@ -26,14 +28,14 @@ const Home = () => {
       <Header />
       <ProductProcess search={search} setSearch={setSearch}/>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {filteredProducts.length > 0 ? (
-          filteredProducts.map((product, index) => (
+        {filteredProducts?.length > 0 ? (
+          filteredProducts?.map((product, index) => (
           
                <ProductItem product={product} index={index}/>
             
           ))
         ) : (
-          productsData.map((product, index) => (
+          productsData?.map((product, index) => (
             <ProductItem product={product} index={index}/>
           ))
         )}
